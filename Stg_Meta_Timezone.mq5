@@ -1,6 +1,6 @@
 /**
  * @file
- * Implements Double meta strategy.
+ * Implements Timezone meta strategy.
  */
 
 // Includes conditional compilation directives.
@@ -35,10 +35,10 @@ input bool Info_On_Chart = true;          // Display info on chart.
 #include "Stg_Meta_Timezone.mqh"
 
 // Defines.
-#define ea_name "Strategy Meta Double"
+#define ea_name "Strategy Meta Timezone"
 #define ea_version "2.000"
-#define ea_desc "Double meta strategy combines signals from two strategies at once."
-#define ea_link "https://github.com/EA31337/Strategy-Meta_Double"
+#define ea_desc "Meta strategy to run different strategies in the different market time zones."
+#define ea_link "https://github.com/EA31337/Strategy-Meta_Timezone"
 #define ea_author "EA31337 Ltd"
 
 // Properties.
@@ -64,7 +64,7 @@ int OnInit() {
   bool _result = true;
   EAParams ea_params(__FILE__, Log_Level);
   ea = new EA(ea_params);
-  _result &= ea.StrategyAdd<Stg_Meta_Double>(Active_Tfs);
+  _result &= ea.StrategyAdd<Stg_Meta_Timezone>(Active_Tfs);
   return (_result ? INIT_SUCCEEDED : INIT_FAILED);
 }
 

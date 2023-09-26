@@ -6,7 +6,7 @@
 
 /**
  * @file
- * Implements Double meta strategy.
+ * Implements Timezone meta strategy.
  */
 
 // Includes the main code.

@@ -1,68 +1,69 @@
 /**
  * @file
- * Implements Double meta strategy.
+ * Implements Timezone meta strategy.
  */
 
 // Prevents processing this includes file multiple times.
-#ifndef STG_META_DOUBLE_MQH
-#define STG_META_DOUBLE_MQH
+#ifndef STG_META_TIMEZONE_MQH
+#define STG_META_TIMEZONE_MQH
 
 // User input params.
-INPUT2_GROUP("Meta Double strategy: main params");
-INPUT2 ENUM_STRATEGY Meta_Double_Strategy1 = STRAT_DEMARKER;   // Strategy 1
-INPUT2 ENUM_STRATEGY Meta_Double_Strategy2 = STRAT_INDICATOR;  // Strategy 2
-INPUT2_GROUP("Meta Double strategy: common params");
-INPUT2 float Meta_Double_LotSize = 0;                // Lot size
-INPUT2 int Meta_Double_SignalOpenMethod = 0;         // Signal open method
-INPUT2 float Meta_Double_SignalOpenLevel = 0;        // Signal open level
-INPUT2 int Meta_Double_SignalOpenFilterMethod = 32;  // Signal open filter method
-INPUT2 int Meta_Double_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
-INPUT2 int Meta_Double_SignalOpenBoostMethod = 0;    // Signal open boost method
-INPUT2 int Meta_Double_SignalCloseMethod = 0;        // Signal close method
-INPUT2 int Meta_Double_SignalCloseFilter = 32;       // Signal close filter (-127-127)
-INPUT2 float Meta_Double_SignalCloseLevel = 0;       // Signal close level
-INPUT2 int Meta_Double_PriceStopMethod = 0;          // Price limit method
-INPUT2 float Meta_Double_PriceStopLevel = 2;         // Price limit level
-INPUT2 int Meta_Double_TickFilterMethod = 32;        // Tick filter method (0-255)
-INPUT2 float Meta_Double_MaxSpread = 4.0;            // Max spread to trade (in pips)
-INPUT2 short Meta_Double_Shift = 0;                  // Shift
-INPUT2 float Meta_Double_OrderCloseLoss = 30;        // Order close loss
-INPUT2 float Meta_Double_OrderCloseProfit = 30;      // Order close profit
-INPUT2 int Meta_Double_OrderCloseTime = -10;         // Order close time in mins (>0) or bars (<0)
+INPUT2_GROUP("Meta Timezone strategy: main params");
+INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy1 = STRAT_DEMARKER;   // Strategy 1
+INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy2 = STRAT_INDICATOR;  // Strategy 2
+INPUT2_GROUP("Meta Timezone strategy: common params");
+INPUT2 float Meta_Timezone_LotSize = 0;                // Lot size
+INPUT2 int Meta_Timezone_SignalOpenMethod = 0;         // Signal open method
+INPUT2 float Meta_Timezone_SignalOpenLevel = 0;        // Signal open level
+INPUT2 int Meta_Timezone_SignalOpenFilterMethod = 32;  // Signal open filter method
+INPUT2 int Meta_Timezone_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
+INPUT2 int Meta_Timezone_SignalOpenBoostMethod = 0;    // Signal open boost method
+INPUT2 int Meta_Timezone_SignalCloseMethod = 0;        // Signal close method
+INPUT2 int Meta_Timezone_SignalCloseFilter = 32;       // Signal close filter (-127-127)
+INPUT2 float Meta_Timezone_SignalCloseLevel = 0;       // Signal close level
+INPUT2 int Meta_Timezone_PriceStopMethod = 0;          // Price limit method
+INPUT2 float Meta_Timezone_PriceStopLevel = 2;         // Price limit level
+INPUT2 int Meta_Timezone_TickFilterMethod = 32;        // Tick filter method (0-255)
+INPUT2 float Meta_Timezone_MaxSpread = 4.0;            // Max spread to trade (in pips)
+INPUT2 short Meta_Timezone_Shift = 0;                  // Shift
+INPUT2 float Meta_Timezone_OrderCloseLoss = 30;        // Order close loss
+INPUT2 float Meta_Timezone_OrderCloseProfit = 30;      // Order close profit
+INPUT2 int Meta_Timezone_OrderCloseTime = -10;         // Order close time in mins (>0) or bars (<0)
 
 // Structs.
 
 // Defines struct with default user strategy values.
-struct Stg_Meta_Double_Params_Defaults : StgParams {
-  Stg_Meta_Double_Params_Defaults()
-      : StgParams(::Meta_Double_SignalOpenMethod, ::Meta_Double_SignalOpenFilterMethod, ::Meta_Double_SignalOpenLevel,
-                  ::Meta_Double_SignalOpenBoostMethod, ::Meta_Double_SignalCloseMethod, ::Meta_Double_SignalCloseFilter,
-                  ::Meta_Double_SignalCloseLevel, ::Meta_Double_PriceStopMethod, ::Meta_Double_PriceStopLevel,
-                  ::Meta_Double_TickFilterMethod, ::Meta_Double_MaxSpread, ::Meta_Double_Shift) {
-    Set(STRAT_PARAM_LS, Meta_Double_LotSize);
-    Set(STRAT_PARAM_OCL, Meta_Double_OrderCloseLoss);
-    Set(STRAT_PARAM_OCP, Meta_Double_OrderCloseProfit);
-    Set(STRAT_PARAM_OCT, Meta_Double_OrderCloseTime);
-    Set(STRAT_PARAM_SOFT, Meta_Double_SignalOpenFilterTime);
+struct Stg_Meta_Timezone_Params_Defaults : StgParams {
+  Stg_Meta_Timezone_Params_Defaults()
+      : StgParams(::Meta_Timezone_SignalOpenMethod, ::Meta_Timezone_SignalOpenFilterMethod,
+                  ::Meta_Timezone_SignalOpenLevel, ::Meta_Timezone_SignalOpenBoostMethod,
+                  ::Meta_Timezone_SignalCloseMethod, ::Meta_Timezone_SignalCloseFilter,
+                  ::Meta_Timezone_SignalCloseLevel, ::Meta_Timezone_PriceStopMethod, ::Meta_Timezone_PriceStopLevel,
+                  ::Meta_Timezone_TickFilterMethod, ::Meta_Timezone_MaxSpread, ::Meta_Timezone_Shift) {
+    Set(STRAT_PARAM_LS, ::Meta_Timezone_LotSize);
+    Set(STRAT_PARAM_OCL, ::Meta_Timezone_OrderCloseLoss);
+    Set(STRAT_PARAM_OCP, ::Meta_Timezone_OrderCloseProfit);
+    Set(STRAT_PARAM_OCT, ::Meta_Timezone_OrderCloseTime);
+    Set(STRAT_PARAM_SOFT, ::Meta_Timezone_SignalOpenFilterTime);
   }
 };
 
-class Stg_Meta_Double : public Strategy {
+class Stg_Meta_Timezone : public Strategy {
  protected:
   DictStruct<long, Ref<Strategy>> strats;
 
  public:
-  Stg_Meta_Double(StgParams &_sparams, TradeParams &_tparams, ChartParams &_cparams, string _name = "")
+  Stg_Meta_Timezone(StgParams &_sparams, TradeParams &_tparams, ChartParams &_cparams, string _name = "")
       : Strategy(_sparams, _tparams, _cparams, _name) {}
 
-  static Stg_Meta_Double *Init(ENUM_TIMEFRAMES _tf = NULL, EA *_ea = NULL) {
+  static Stg_Meta_Timezone *Init(ENUM_TIMEFRAMES _tf = NULL, EA *_ea = NULL) {
     // Initialize strategy initial values.
-    Stg_Meta_Double_Params_Defaults stg_double_defaults;
-    StgParams _stg_params(stg_double_defaults);
+    Stg_Meta_Timezone_Params_Defaults stg_timezone_defaults;
+    StgParams _stg_params(stg_timezone_defaults);
     // Initialize Strategy instance.
     ChartParams _cparams(_tf, _Symbol);
     TradeParams _tparams;
-    Strategy *_strat = new Stg_Meta_Double(_stg_params, _tparams, _cparams, "(Meta) Double");
+    Strategy *_strat = new Stg_Meta_Timezone(_stg_params, _tparams, _cparams, "(Meta) Timezone");
     return _strat;
   }
 
@@ -70,8 +71,8 @@ class Stg_Meta_Double : public Strategy {
    * Event on strategy's init.
    */
   void OnInit() {
-    StrategyAdd(Meta_Double_Strategy1);
-    StrategyAdd(Meta_Double_Strategy2);
+    StrategyAdd(Meta_Timezone_Strategy1);
+    StrategyAdd(Meta_Timezone_Strategy2);
   }
 
   /**
@@ -309,4 +310,4 @@ class Stg_Meta_Double : public Strategy {
   }
 };
 
-#endif  // STG_META_DOUBLE_MQH
+#endif  // STG_META_TIMEZONE_MQH
