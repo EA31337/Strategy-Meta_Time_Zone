@@ -10,4 +10,4 @@
  */
 
 // Includes the main code.
-#include "Stg_Meta_Double.mq5"
+#include "Stg_Meta_Timezone.mq5"
