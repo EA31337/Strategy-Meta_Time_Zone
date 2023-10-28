@@ -13,24 +13,24 @@ INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_London = STRAT_DEMARKER;   // London
 INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_NewYork = STRAT_ICHIMOKU;  // New York market hours strategy
 INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_Sydney = STRAT_BANDS;      // Sydney market hours strategy
 INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_Tokyo = STRAT_ENVELOPES;   // Tokyo market hours strategy
-INPUT2_GROUP("Meta Timezone strategy: common params");
-INPUT2 float Meta_Timezone_LotSize = 0;                // Lot size
-INPUT2 int Meta_Timezone_SignalOpenMethod = 0;         // Signal open method
-INPUT2 float Meta_Timezone_SignalOpenLevel = 0;        // Signal open level
-INPUT2 int Meta_Timezone_SignalOpenFilterMethod = 32;  // Signal open filter method
-INPUT2 int Meta_Timezone_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
-INPUT2 int Meta_Timezone_SignalOpenBoostMethod = 0;    // Signal open boost method
-INPUT2 int Meta_Timezone_SignalCloseMethod = 0;        // Signal close method
-INPUT2 int Meta_Timezone_SignalCloseFilter = 32;       // Signal close filter (-127-127)
-INPUT2 float Meta_Timezone_SignalCloseLevel = 0;       // Signal close level
-INPUT2 int Meta_Timezone_PriceStopMethod = 0;          // Price limit method
-INPUT2 float Meta_Timezone_PriceStopLevel = 2;         // Price limit level
-INPUT2 int Meta_Timezone_TickFilterMethod = 32;        // Tick filter method (0-255)
-INPUT2 float Meta_Timezone_MaxSpread = 4.0;            // Max spread to trade (in pips)
-INPUT2 short Meta_Timezone_Shift = 0;                  // Shift
-INPUT2 float Meta_Timezone_OrderCloseLoss = 30;        // Order close loss
-INPUT2 float Meta_Timezone_OrderCloseProfit = 30;      // Order close profit
-INPUT2 int Meta_Timezone_OrderCloseTime = -10;         // Order close time in mins (>0) or bars (<0)
+INPUT3_GROUP("Meta Timezone strategy: common params");
+INPUT3 float Meta_Timezone_LotSize = 0;                // Lot size
+INPUT3 int Meta_Timezone_SignalOpenMethod = 0;         // Signal open method
+INPUT3 float Meta_Timezone_SignalOpenLevel = 0;        // Signal open level
+INPUT3 int Meta_Timezone_SignalOpenFilterMethod = 32;  // Signal open filter method
+INPUT3 int Meta_Timezone_SignalOpenFilterTime = 3;     // Signal open filter time (0-31)
+INPUT3 int Meta_Timezone_SignalOpenBoostMethod = 0;    // Signal open boost method
+INPUT3 int Meta_Timezone_SignalCloseMethod = 0;        // Signal close method
+INPUT3 int Meta_Timezone_SignalCloseFilter = 32;       // Signal close filter (-127-127)
+INPUT3 float Meta_Timezone_SignalCloseLevel = 0;       // Signal close level
+INPUT3 int Meta_Timezone_PriceStopMethod = 0;          // Price limit method
+INPUT3 float Meta_Timezone_PriceStopLevel = 2;         // Price limit level
+INPUT3 int Meta_Timezone_TickFilterMethod = 32;        // Tick filter method (0-255)
+INPUT3 float Meta_Timezone_MaxSpread = 4.0;            // Max spread to trade (in pips)
+INPUT3 short Meta_Timezone_Shift = 0;                  // Shift
+INPUT3 float Meta_Timezone_OrderCloseLoss = 30;        // Order close loss
+INPUT3 float Meta_Timezone_OrderCloseProfit = 30;      // Order close profit
+INPUT3 int Meta_Timezone_OrderCloseTime = -10;         // Order close time in mins (>0) or bars (<0)
 
 // Structs.
 
