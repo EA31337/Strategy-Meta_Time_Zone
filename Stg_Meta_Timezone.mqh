@@ -9,10 +9,10 @@
 
 // User input params.
 INPUT2_GROUP("Meta Timezone strategy: main params");
-INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_London = STRAT_DEMARKER;   // London market hours strategy
-INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_NewYork = STRAT_ICHIMOKU;  // New York market hours strategy
-INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_Sydney = STRAT_BANDS;      // Sydney market hours strategy
-INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_Tokyo = STRAT_ENVELOPES;   // Tokyo market hours strategy
+INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_London = STRAT_OSCILLATOR_TREND;        // London market hours strategy
+INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_NewYork = STRAT_MA_BREAKOUT;            // New York market hours strategy
+INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_Sydney = STRAT_OSCILLATOR_CROSS_SHIFT;  // Sydney market hours strategy
+INPUT2 ENUM_STRATEGY Meta_Timezone_Strategy_Tokyo = STRAT_AD;                       // Tokyo market hours strategy
 INPUT3_GROUP("Meta Timezone strategy: common params");
 INPUT3 float Meta_Timezone_LotSize = 0;                // Lot size
 INPUT3 int Meta_Timezone_SignalOpenMethod = 0;         // Signal open method
